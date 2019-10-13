@@ -7,7 +7,7 @@ const Container = Styled.div`
     z-index: 100;
     border-radius: 4px;
     width: 250px;
-    min-height: 80px;
+    min-height: 70px;
     padding: 16px;
     position: fixed;
     bottom: 32px;
@@ -26,8 +26,7 @@ const Close = Styled.a`
 
 const Message = Styled.div`
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 16px;
+    margin-top: 20px;
     font-size: 17px;
     font-weight: 400;
     color: ${props => props.theme.palette.dark.secondaryText};
@@ -41,8 +40,10 @@ const Toast = ({ message, onClose }) => {
             </Close>
             <Message>
                 <a className="material-icons">error</a>
-                <span style={{ fontWeight: 600, margin: '0 6px' }}>Error : </span>
-                <span>{message}</span>
+                <div>
+                    <span style={{ fontWeight: 600, margin: '0 6px' }}>Error : </span>
+                    <span>{message}</span>
+                </div>
             </Message>
         </Container>
     );
