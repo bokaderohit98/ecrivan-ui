@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { Loader } from './components';
+import { Error } from './components';
 import Theme from './constants/theme';
 
 const App = () => {
     return (
         <ThemeProvider theme={Theme}>
-            <Loader />
+            <Error message="System Crashed" onClose={() => console.log('closing')} />
         </ThemeProvider>
     );
 };
