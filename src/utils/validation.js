@@ -4,6 +4,7 @@ export const validateInputs = (inputText, wordLimit) => {
             .trim()
             .split(' ')
             .map(word => word.trim())
+            .filter(word => word !== '')
             .join(' ').length < 100
     )
         return {
