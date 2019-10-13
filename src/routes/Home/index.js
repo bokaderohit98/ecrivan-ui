@@ -50,7 +50,7 @@ class Home extends PureComponent {
 
     handleGenerateStory = () => {
         const { inputText, wordLimit } = this.state;
-        const { inputError, inputErrorMessage } = validateInputs(inputText, wordLimit);
+        const { inputError, inputErrorMessage, requestText } = validateInputs(inputText, wordLimit);
         if (inputError) {
             this.setState(
                 {
@@ -68,7 +68,7 @@ class Home extends PureComponent {
             loading: true
         });
 
-        generateStory(inputText, wordLimit)
+        generateStory(requestText, wordLimit)
             .then(res => {
                 this.setState({
                     loading: false,

@@ -1,12 +1,11 @@
 export const validateInputs = (inputText, wordLimit) => {
-    if (
-        inputText
-            .trim()
-            .split(' ')
-            .map(word => word.trim())
-            .filter(word => word !== '')
-            .join(' ').length < 100
-    )
+    const requestText = inputText
+        .split(' ')
+        .map(word => word.trim())
+        .filter(word => word !== '')
+        .join(' ');
+
+    if (requestText.length < 100)
         return {
             inputError: true,
             inputErrorMessage: 'I need atleast 100 characters to write a story.'
@@ -20,6 +19,7 @@ export const validateInputs = (inputText, wordLimit) => {
 
     return {
         inputError: false,
-        inputErrorMessage: ''
+        inputErrorMessage: '',
+        requestText
     };
 };
