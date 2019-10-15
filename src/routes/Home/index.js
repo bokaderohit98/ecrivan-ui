@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Loader, Error, Toast } from '../../components';
 import { validateInputs } from '../../utils/validation';
+import { trimText } from '../../utils/textProcessing';
 import { generateStory } from '../../api';
 import InputArea from './InputArea';
 import ResultArea from './ResultArea';
@@ -11,6 +12,7 @@ class Home extends PureComponent {
         this.state = {
             loading: false,
             wordLimit: 0,
+            charCount: 0,
             inputText: '',
             inputError: false,
             inputErrorMessage: '',
@@ -35,8 +37,10 @@ class Home extends PureComponent {
 
     handleInputChange = ({ target }) => {
         const { value } = target;
+        const charCount = trimText(value).length;
         this.setState({
-            inputText: value
+            inputText: value,
+            charCount
         });
     };
 
@@ -93,7 +97,8 @@ class Home extends PureComponent {
             inputErrorMessage,
             serverError,
             showResult,
-            result
+            result,
+            charCount
         } = this.state;
         return (
             <>
@@ -109,6 +114,7 @@ class Home extends PureComponent {
                         onInputChange={this.handleInputChange}
                         onWordLimitChange={this.handleWordLimitChange}
                         generateStory={this.handleGenerateStory}
+                        charCount={charCount}
                     />
                 )}
                 {!loading && showResult && <ResultArea result={result} onClose={this.handleResultDismiss} />}

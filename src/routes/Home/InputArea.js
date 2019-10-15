@@ -30,6 +30,22 @@ const Input = Styled.textarea`
     }
 `;
 
+const CountContainer = Styled.div`
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+const CountLabel = Styled.div`
+    color: ${props => props.theme.palette.dark.primaryText}
+    margin-right: 16px;
+`;
+
+const Count = Styled.div`
+    color: ${props => props.theme.palette.dark.secondaryText};
+`;
+
 const WordLimitContaier = Styled.div`
     display: flex;
     justify-content: space-around;
@@ -74,7 +90,7 @@ const Button = Styled.div`
     }
 `;
 
-const InputArea = ({ inputText, wordLimit, onInputChange, onWordLimitChange, generateStory }) => {
+const InputArea = ({ inputText, wordLimit, onInputChange, onWordLimitChange, generateStory, charCount }) => {
     return (
         <Container>
             <Container>
@@ -83,6 +99,10 @@ const InputArea = ({ inputText, wordLimit, onInputChange, onWordLimitChange, gen
                     value={inputText}
                     onChange={onInputChange}
                 />
+                <CountContainer>
+                    <CountLabel>Character Count</CountLabel>
+                    <Count>{charCount}</Count>
+                </CountContainer>
                 <WordLimitContaier>
                     <WordLimitLabel>How many characters do you want me to write?</WordLimitLabel>
                     <WordLimit type="number" placeholder="Count" value={wordLimit} onChange={onWordLimitChange} />
@@ -98,7 +118,8 @@ InputArea.propTypes = {
     wordLimit: PropTypes.string.isRequired,
     onInputChange: PropTypes.func.isRequired,
     onWordLimitChange: PropTypes.func.isRequired,
-    generateStory: PropTypes.func.isRequired
+    generateStory: PropTypes.func.isRequired,
+    charCount: PropTypes.string.isRequired
 };
 
 export default InputArea;
