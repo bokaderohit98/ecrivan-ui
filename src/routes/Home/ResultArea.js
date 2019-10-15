@@ -17,7 +17,6 @@ const Close = Styled.a`
 `;
 
 const Story = Styled.div`
-    word-break: break-all;
     margin-top: 32px;
     padding: 32px;
     border-radius: 4px;

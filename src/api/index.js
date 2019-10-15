@@ -1,11 +1,10 @@
+import axios from 'axios';
+
 export const generateStory = (inputText, wordLimit) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                data: {
-                    story: inputText.repeat(Math.floor(wordLimit / inputText.length))
-                }
-            });
-        }, 5000);
+    return axios.get('/api', {
+        params: {
+            inputText,
+            wordLimit
+        }
     });
 };
