@@ -11,10 +11,10 @@ export const validateInputs = (inputText, wordLimit) => {
             inputErrorMessage: 'I need atleast 100 characters to write a story.'
         };
 
-    if (wordLimit < 200)
+    if (wordLimit < 150)
         return {
             inputError: true,
-            inputErrorMessage: 'Seriously? You want me to generate a story with less than 200 words!'
+            inputErrorMessage: 'Seriously? You want me to generate a story with less than 150 words!'
         };
 
     return {
