@@ -1,9 +1,7 @@
+import { trimText } from './textProcessing';
+
 export const validateInputs = (inputText, wordLimit) => {
-    const requestText = inputText
-        .split(' ')
-        .map(word => word.trim())
-        .filter(word => word !== '')
-        .join(' ');
+    const requestText = trimText(inputText);
 
     if (requestText.length < 100)
         return {
